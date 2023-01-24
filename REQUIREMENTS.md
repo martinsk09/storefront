@@ -5,9 +5,9 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
-- Show
-- Create [token required]
+- Index /products
+- Show /product/:id
+- Create [token required] /product/create
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category (args: product category)
 
@@ -26,12 +26,27 @@ These are the notes from a meeting with the frontend developer that describe wha
 - name
 - price
 - [OPTIONAL] category
+(
+id SERIAL PRIMARY KEY  NOT NULL,
+name VARCHAR(50) NOT NULL,
+price integer NOT NULL,
+category VARCHAR(50) NULL
+
+);
 
 #### User
 - id
 - firstName
 - lastName
 - password
+(
+id SERIAL PRIMARY KEY  NOT NULL,
+firstName VARCHAR(50) NOT NULL,
+lastName VARCHAR(50) NOT NULL,
+username VARCHAR(100) NOT NULL,
+password_digest VARCHAR
+
+);
 
 #### Orders
 - id
@@ -39,4 +54,26 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+(
+id SERIAL PRIMARY KEY  NOT NULL,
+product_id bigint REFERENCES products(id),
+user_id bigint REFERENCES users(id),
+status VARCHAR(50) NULL
 
+);
+(
+id SERIAL PRIMARY KEY NOT NULL,
+quantity  integer,
+order_id bigint REFERENCES orders(id),
+product_id bigint REFERENCES products(id),
+
+);
+
+Steps Implementation
+
+create db structure
+create migrations 
+create models
+create handlers
+finalize authentication
+run tests
