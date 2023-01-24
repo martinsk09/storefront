@@ -1,5 +1,38 @@
 # Storefront Backend Project
 
+## Martins Kayode Done Project
+run yarn to install dependencies and then run yarn watch to spin up the server
+
+Models created
+User
+Product
+Order
+
+User
+create - /users - post - {"firstname":"string", "lastname":"string"."username":"string", "password":"string"}
+show - /users/:id
+index - 0.0.0.0:3200/users - requires token
+authenticate to get token - /users/authenticate - post - {"username":"string", "password":"string"}
+
+Product
+index - 0.0.0.0:3200/products
+show - /products/:productID
+create - /products - "name":"Cisco X33", "price":"1300", "category":"Server"
+
+Order
+index - /orders/:userID/all 
+show active orders /orders/:userID
+add products - /users/:userID/orders/:orderID/products - post - {
+    "quantity": "3",
+    "orderId": "2",
+    "productId": "3"
+}
+create - /orders/create - post - {
+    "userID":"2",
+    "status":"active"
+}
+
+
 ## Getting Started
 
 This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `yarn` in your terminal at the project root.
