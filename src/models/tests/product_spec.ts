@@ -1,22 +1,22 @@
-import { Product,ProductT } from './../product';
-const store = new Product();
+const { Product,ProductT } = require( './../product');
+const storep = new Product();
 //test index show create authenticate
 
 describe("Product Model", () => {
     it('should have an index method', () => {
-      expect(store.index).toBeDefined();
+      expect(storep.index).toBeDefined();
     });
   
     it('should have a show method', () => {
-      expect(store.show).toBeDefined();
+      expect(storep.show).toBeDefined();
     });
   
     it('should have a create method', () => {
-      expect(store.create).toBeDefined();
+      expect(storep.create).toBeDefined();
     });
   
     it('should have an categoryIndex method', () => {
-      expect(store.categoryIndex).toBeDefined();
+      expect(storep.categoryIndex).toBeDefined();
     });
 
 });

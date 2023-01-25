@@ -1,4 +1,4 @@
-import { User,UserT } from './../user';
+const { User,UserT } = require( './../user');
 const store = new User();
 //test index show create authenticate
 

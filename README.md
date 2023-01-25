@@ -1,7 +1,120 @@
 # Storefront Backend Project
 
 ## Martins Kayode Done Project
-run yarn to install dependencies and then run yarn watch to spin up the server
+
+Some requirements listed out are as follows:
+
+1. Port number for db and server.
+2. Environment variables.
+3. Package installation instructions.
+4. Setup db and server instructions.
+5. Database schema with column name and type.
+6. Endpoints such as GET /users.
+
+
+1. Port number for db and server.
+The DB is running on port 5432.
+The Server is running on port 3200.
+
+
+2. Environment Variables
+POSTGRES_HOST=127.0.0.1
+POSTGRES_DB_TEST=store_front_test
+POSTGRES_DB=store_front
+POSTGRES_USER= add a user for the database
+POSTGRES_PASSWORD= add a password for the database user
+ENV=dev
+BCRYPT_PASSWORD=add a unique password like set_world_defense_dmz
+SALT_ROUNDS=add a number like 10
+TOKEN_SECRET= createASecret
+
+
+3. Package installation instructions.
+run yarn install to add the dependencies
+
+
+4. Setup db and server instructions.
+To start a user should be created to manage the database with full access/privilege
+two databases would be created one for testing and the live/dev db as seen in the ENV Variables
+After creating these the database is ready, add details are in the database.json
+{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "store_front",
+      "user": "db_user",
+      "password": "db_password"
+    },
+    "test": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "store_front_test",
+      "user": "db_user",
+      "password": "db_password"
+    }
+  }
+
+The server.ts file houses the server configuration
+
+To start the server
+run yarn watch
+
+
+5. Database schema with column name and type
+CREATE TABLE users (
+id SERIAL PRIMARY KEY  NOT NULL,
+firstName VARCHAR(100) NOT NULL,
+lastName VARCHAR(100) NOT NULL,
+username VARCHAR(100) NOT NULL,
+password_digest VARCHAR
+);
+
+CREATE TABLE products (
+id SERIAL PRIMARY KEY  NOT NULL,
+name VARCHAR(64) NOT NULL,
+price integer NOT NULL,
+category VARCHAR(50) NULL
+);
+
+CREATE TABLE orders (
+id SERIAL PRIMARY KEY  NOT NULL,
+user_id bigint REFERENCES users(id),
+status VARCHAR(50) NULL
+);
+
+CREATE TABLE orders_products (
+id SERIAL PRIMARY KEY NOT NULL,
+quantity integer,
+order_id bigint REFERENCES orders(id),
+product_id bigint REFERENCES products(id)
+);
+
+run db-migrate up:all
+
+
+6. Endpoints such as GET /users
+
+run yarn test to validate these routes
+
+userRoutes
+GET /users
+GET /users/:id
+POST /users
+POST /users/authenticate
+
+productRoutes
+GET /products
+GET /products/:id
+POST /products
+GET /products/category/:id
+
+orderRoutes
+GET /orders/:userID/all
+GET /orders/:userID
+POST /orders/create
+POST /users/:userID/orders/:orderID/products
+
+
 
 Models created
 

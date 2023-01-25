@@ -1,22 +1,24 @@
-import { Order,OrderT } from './../order';
-const store = new Order();
+// const Order = require( './../order');
+import {Order} from './../order';
+
+const storeo = new Order();
 //test index show create authenticate
 
 describe("Order Model", () => {
     it('should have an orderIndex method', () => {
-      expect(store.orderIndex).toBeDefined();
+      expect(storeo.orderIndex).toBeDefined();
     });
   
     it('should have a showActive method', () => {
-      expect(store.showActive).toBeDefined();
+      expect(storeo.showActive).toBeDefined();
     });
   
     it('should have a create method', () => {
-      expect(store.create).toBeDefined();
+      expect(storeo.create).toBeDefined();
     });
   
     it('should have an addProduct method', () => {
-      expect(store.addProduct).toBeDefined();
+      expect(storeo.addProduct).toBeDefined();
     });
 
 });
