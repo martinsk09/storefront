@@ -23,7 +23,7 @@ describe("Order Model", () => {
 
     it('create an order', async () => {
       const order: OrderT = {
-        "user_id":1,
+        "user_id":2,
         "status":"active"
       };
       await storeo.create(order)
@@ -45,7 +45,7 @@ describe("Order Model", () => {
     });
 
     it('show orders for a user', async () => {
-      const orders = await storeo.orderIndex("1")
+      const orders = await storeo.orderIndex("2")
 
     expect(orders).toBeInstanceOf(Object);
       //done();

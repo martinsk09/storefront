@@ -41,7 +41,7 @@ describe("User Model", () => {
         "password_digest":"mktelunopa"
       };
       await store.create(userb)
-      const user = await store.show('1')
+      const user = await store.show('2')
     expect(user).toBeInstanceOf(Object); 
       //done();
     });
