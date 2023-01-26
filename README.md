@@ -54,6 +54,22 @@ After creating these the database is ready, add details are in the database.json
     }
   }
 
+The next step is to create the database and the user, this can be done with SQL or via the CLI, it is needed in order to connect to the database
+
+  **Create user**
+
+CREATE USER db_user WITH PASSWORD "db_password.
+
+  **Create two databases**
+
+CREATE DATABASE store_front;
+CREATE DATABASE store_front_test; 
+
+*Grant all privileges to db_user in both databases**
+
+GRANT ALL PRIVILEGES ON DATABASE store_front TO db_user;
+GRANT ALL PRIVILEGES ON DATABASE store_front_test TO db_user:
+
 The server.ts file houses the server configuration
 
 To start the server

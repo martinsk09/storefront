@@ -5,18 +5,39 @@ import jwt from 'jsonwebtoken';
 const store = new Product();
 
 const index = async (req: Request, res: Response) => {
-  const products = await store.index();
+  try { 
+    const products = await store.index();
   res.json(products);
+  }
+  catch (err) {
+    res.status(500);
+    res.json('An error occured. '+err);
+    return;
+  }
 };
 
 const show = async (req: Request, res: Response) => {
-  const product = await store.show(req.params.id);
+  try { 
+    const product = await store.show(req.params.id);
   res.json(product);
+  }
+  catch (err) {
+    res.status(500);
+    res.json('An error occured. '+err);
+    return;
+  }
 };
 
 const categoryIndex = async (req: Request, res: Response) => {
-  const products = await store.categoryIndex(req.params.id);
+  try {
+    const products = await store.categoryIndex(req.params.id);
   res.json(products);
+  }
+  catch (err) {
+    res.status(500);
+    res.json('An error occured. '+err);
+    return;
+  }
 };
 
 const create = async (req: Request, res: Response) => {

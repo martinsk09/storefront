@@ -5,13 +5,53 @@ import jwt from 'jsonwebtoken';
 const store = new Order();
 
 const index = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization; // @ts-ignore
+    const token = authorizationHeader.split(' ')[1];
+    jwt.verify(
+      token,
+      // @ts-ignore
+      process.env.TOKEN_SECRET
+    );
+  } catch (err) {
+    res.status(401);
+    res.json('Access denied, invalid token');
+    return;
+  } 
+
+  try {
   const orders = await store.orderIndex(req.params.userID);
   res.json(orders);
+  } catch {
+    res.status(401);
+    res.json('Access denied, invalid token');
+    return;
+  }
+  
 };
 
 const show = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization; // @ts-ignore
+    const token = authorizationHeader.split(' ')[1];
+    jwt.verify(
+      token,
+      // @ts-ignore
+      process.env.TOKEN_SECRET
+    );
+  } catch (err) {
+    res.status(401);
+    res.json('Access denied, invalid token');
+    return;
+  }
+  try {
+
   const orders = await store.showActive(req.params.userID);
   res.json(orders);
+  } catch(err) {
+    res.status(400);
+    res.json(err);
+  }
 };
 
 const create = async (req: Request, res: Response) => {
