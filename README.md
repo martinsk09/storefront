@@ -12,31 +12,48 @@ Some requirements listed out are as follows:
 6. Endpoints such as GET /users.
 
 
+
 1. Port number for db and server.
+
 The DB is running on port 5432.
+
 The Server is running on port 3200.
 
 
+
 2. Environment Variables
+
+
 POSTGRES_HOST=127.0.0.1
+
 POSTGRES_DB_TEST=store_front_test
+
 POSTGRES_DB=store_front
-POSTGRES_USER= add a user for the database
-POSTGRES_PASSWORD= add a password for the database user
+
+POSTGRES_USER=db_user
+
+POSTGRES_PASSWORD=db_password
+
 ENV=dev
-BCRYPT_PASSWORD=add a unique password like set_world_defense_dmz
-SALT_ROUNDS=add a number like 10
-TOKEN_SECRET= createASecret
+
+BCRYPT_PASSWORD=set_world_defense_dmz
+
+SALT_ROUNDS=10
+
+TOKEN_SECRET=createASecret
 
 
 3. Package installation instructions.
+
 run yarn install to add the dependencies
 
 
 4. Setup db and server instructions.
+
 To start a user should be created to manage the database with full access/privilege
 two databases would be created one for testing and the live/dev db as seen in the ENV Variables
 After creating these the database is ready, add details are in the database.json
+
 {
     "dev": {
       "driver": "pg",
@@ -68,15 +85,19 @@ CREATE DATABASE store_front_test;
 *Grant all privileges to db_user in both databases**
 
 GRANT ALL PRIVILEGES ON DATABASE store_front TO db_user;
+
 GRANT ALL PRIVILEGES ON DATABASE store_front_test TO db_user:
 
 The server.ts file houses the server configuration
 
 To start the server
+
 run yarn watch
 
 
 5. Database schema with column name and type
+
+
 CREATE TABLE users (
 id SERIAL PRIMARY KEY  NOT NULL,
 firstName VARCHAR(100) NOT NULL,
