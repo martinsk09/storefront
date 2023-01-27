@@ -18,25 +18,38 @@ The Server is running on port 3200.
 
 
 2. Environment Variables
+
+
 POSTGRES_HOST=127.0.0.1
+
 POSTGRES_DB_TEST=store_front_test
+
 POSTGRES_DB=store_front
-POSTGRES_USER= add a user for the database
-POSTGRES_PASSWORD= add a password for the database user
+
+POSTGRES_USER=db_user
+
+POSTGRES_PASSWORD=db_password
+
 ENV=dev
-BCRYPT_PASSWORD=add a unique password like set_world_defense_dmz
-SALT_ROUNDS=add a number like 10
-TOKEN_SECRET= createASecret
+
+BCRYPT_PASSWORD=set_world_defense_dmz
+
+SALT_ROUNDS=10
+
+TOKEN_SECRET=createASecret
 
 
 3. Package installation instructions.
+
 run yarn install to add the dependencies
 
 
 4. Setup db and server instructions.
+
 To start a user should be created to manage the database with full access/privilege
 two databases would be created one for testing and the live/dev db as seen in the ENV Variables
 After creating these the database is ready, add details are in the database.json
+
 {
     "dev": {
       "driver": "pg",
